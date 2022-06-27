@@ -11,7 +11,15 @@ module ApplicationHelper
   end
 
   # Simonsays game logic code:
-  # def red
-  #   alert('Hi')
-  # end
+  def initialization
+    $blue = 0
+  end
+
+  def redvalue(red)
+    return ($blue.to_i + red.to_i)
+  end
+
+  def red
+    $blue = 3
+  end
 end
