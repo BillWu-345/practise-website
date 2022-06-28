@@ -1,12 +1,23 @@
-<button class='mainButton' onClick='red()'>Red</button>
-<button class='mainButton' onClick='yellow()'>Yellow</button>
-<button class='mainButton' onClick='blue()'>Blue</button>
-<button class='mainButton' onClick='green()'>Green</button>
+<h3 style='font-size: 40px'>Play the Classic SimonSays Game</h3>
+<div class="mainbox">
+  <div class='scorebox'>
+    <h2 id='score'>0</h2>
+  </div>
+  <button id='red' onClick='red()'></button>
+  <button id='yellow' onClick='yellow()'></button>
+  <button id='blue' onClick='blue()'></button>
+  <button id='green'  onClick='green()'></button>
+</div>
 
-<button class='mainButton' onClick='newGame()'>New Game</button>
-<h3>Score: <span id='score'></span></h3>
+<div class='newGameDiv'>
+  <button class='newGame' onClick='newGame()'>New Game</button>
+</div>
+
 <p>Button Lit Up Simulator:<span id='buttonslight'></span></p>
 <p id='testArray'></p>
 <p>High Score: <span id='highscore'></span></p>
-
+<%= audio_tag "key08.wav", id: "redSound" %>
+<%= audio_tag "key11.wav", id: "yellowSound" %>
+<%= audio_tag "key04.wav", id: "blueSound" %>
+<%= audio_tag "key15.wav", id: "greenSound" %>
 <%= javascript_include_tag('simonsaysLogic.js') %>

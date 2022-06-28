@@ -103,8 +103,91 @@ footer {
   margin-top: 45px;
 }
 
-.mainButton {
-  width: 100px;
-  height: 60px;
-  border-radius: 5px;
+
+.mainbox {
+  width: 500px;
+  height: 500px;
+  border-radius: 240px;
+  margin: 100px auto 70px;
+  position: relative;
+  background-color: lightgrey;
+}
+
+
+#red {
+  border: none;
+  background-color: red;
+  width: 215px;
+  height: 215px;
+  margin: 25px 20px 20px 25px;
+  border-radius: 250px 0 0 0;
+}
+#red:active {
+  background-color: crimson !important;
+}
+
+#yellow {
+  border: none;
+  background-color: yellow;
+  width: 215px;
+  height: 215px;
+  border-radius: 0 250px 0 0;
+}
+#yellow:active {
+  background-color: gold !important;
+}
+
+#blue {
+  border: none;
+  background-color: blue;
+  width: 215px;
+  height: 215px;
+  margin: 0 20px 0 25px;
+  border-radius: 0 0 0 250px;
+}
+#blue:active {
+  background-color: cornflowerblue !important;
+}
+
+#green {
+  border: none;
+  background-color: green;
+  width: 215px;
+  height: 215px;
+  border-radius: 0 0 250px 0;
+}
+#green:active {
+  background-color: lime !important;
+}
+
+.scorebox {
+  border-radius: 150px;
+  position: absolute;
+  top: 150px; left: 150px;
+  width: 200px;
+  height: 200px;
+  background-color: lightgrey !important;
+}
+#score {
+  border-radius: 150px;
+  padding: 45px 0;
+  font-size: 70px;
+  color: black;
+}
+
+.newGame {
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: cyan;
+  font-size: 30px;
+}
+.newGame:active {
+  background-color: lightblue;
+}
+.newGameDiv {
+  width: 300px;
+  height: 120px;
+  margin: 0 auto;
 }
