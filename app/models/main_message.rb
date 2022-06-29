@@ -1,0 +1,2 @@
+class MainMessage < ApplicationRecord
+end
