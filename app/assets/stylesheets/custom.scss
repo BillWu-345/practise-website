@@ -36,7 +36,7 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
 }
 
 h2 {
@@ -187,4 +187,16 @@ h4 {
   width: 300px;
   height: 120px;
   margin: 0 auto;
+}
+
+// Homepage
+#simonsays_icon {
+  margin: 50px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.simonsays_text {
+  display: inline-block;
 }
