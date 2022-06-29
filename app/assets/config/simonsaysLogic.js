@@ -58,12 +58,10 @@ function green() {
   }
 }
 function correctResponse(){
-  document.getElementById('testArray').innerHTML = userArray;
   if (userArray.length == correctArray.length) {
     score += 1;
     updateScore();
     correctArray.push(Math.floor(4*Math.random() + 1));
-    document.getElementById('buttonslight').innerHTML = correctArray;
     playCorrectArray();
     userArray = [];
   }
@@ -79,9 +77,7 @@ function newGame() {
   updateScore();
   gameFinished = false;
   correctArray.push(Math.floor(4*Math.random() + 1));
-  document.getElementById('buttonslight').innerHTML = correctArray;
   playCorrectArray();
-  document.getElementById('testArray').innerHTML = userArray;
 }
 async function playCorrectArray() {
   for (let i=0; i<correctArray.length; i++) {
