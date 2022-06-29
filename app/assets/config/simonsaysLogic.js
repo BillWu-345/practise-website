@@ -3,13 +3,15 @@ let userArray = [];
 let score = 0;
 let gameFinished = true;
 let highscore = 0;
+let currentlyPlaying = false;
 
 function red() {
-  if (gameFinished === true) {
+  if (gameFinished === true || currentlyPlaying === true) {
     return;
   }
   userArray.push(1);
   if (correctArray[userArray.length - 1] === 1) {
+    document.getElementById('redSound').currentTime=0;
     document.getElementById('redSound').play();
     correctResponse();
   } else {
@@ -17,11 +19,12 @@ function red() {
   }
 }
 function yellow() {
-  if (gameFinished === true) {
+  if (gameFinished === true || currentlyPlaying === true) {
     return;
   }
   userArray.push(2);
   if (correctArray[userArray.length - 1] === 2) {
+    document.getElementById('yellowSound').currentTime=0;
     document.getElementById('yellowSound').play();
     correctResponse();
   } else {
@@ -29,11 +32,12 @@ function yellow() {
   }
 }
 function blue() {
-  if (gameFinished === true) {
+  if (gameFinished === true || currentlyPlaying === true) {
     return;
   }
   userArray.push(3);
   if (correctArray[userArray.length - 1] === 3) {
+    document.getElementById('blueSound').currentTime=0;
     document.getElementById('blueSound').play();
     correctResponse();
   } else {
@@ -41,11 +45,12 @@ function blue() {
   }
 }
 function green() {
-  if (gameFinished === true) {
+  if (gameFinished === true || currentlyPlaying === true) {
     return;
   }
   userArray.push(4);
   if (correctArray[userArray.length - 1] === 4) {
+    document.getElementById('greenSound').currentTime=0;
     document.getElementById('greenSound').play();
     correctResponse();
   } else {
@@ -80,32 +85,33 @@ function newGame() {
 }
 async function playCorrectArray() {
   for (let i=0; i<correctArray.length; i++) {
-    await sleep(700);
+    currentlyPlaying = true;
+    await sleep(800);
     switch (correctArray[i]) {
       case 1:
         document.getElementById('redSound').play();
         document.getElementById("red").style.backgroundColor = "crimson";
-        setTimeout(()=>{document.getElementById("red").style.backgroundColor = "red"} , 700);
+        setTimeout(()=>{document.getElementById("red").style.backgroundColor = "red"} , 750);
         break;
       case 2:
         document.getElementById('yellowSound').play();
         document.getElementById("yellow").style.backgroundColor = "gold";
-        setTimeout(()=>{document.getElementById("yellow").style.backgroundColor = "yellow"} , 700);
+        setTimeout(()=>{document.getElementById("yellow").style.backgroundColor = "yellow"} , 750);
         break;
       case 3:
         document.getElementById('blueSound').play();
         document.getElementById("blue").style.backgroundColor = "cornflowerblue";
-        setTimeout(()=>{document.getElementById("blue").style.backgroundColor = "blue"} , 700);
+        setTimeout(()=>{document.getElementById("blue").style.backgroundColor = "blue"} , 750);
         break;
       case 4:
         document.getElementById('greenSound').play();
         document.getElementById("green").style.backgroundColor = "lime";
-        setTimeout(()=>{document.getElementById("green").style.backgroundColor = "green"} , 700);
+        setTimeout(()=>{document.getElementById("green").style.backgroundColor = "green"} , 750);
         break;
       default:
-        alert('Error note not found');
     }
   }
+  currentlyPlaying = false;
 }
 
 function sleep(ms) {

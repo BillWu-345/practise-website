@@ -1,4 +1,7 @@
+<% provide(:title, "Simon Says") %>
+
 <h3 style='font-size: 40px'>Play the Classic SimonSays Game</h3>
+<h4>High Score: <span id='highscore'></span></h4>
 <div class="mainbox">
   <div class='scorebox'>
     <h2 id='score'>0</h2>
@@ -13,9 +16,8 @@
   <button class='newGame' onClick='newGame()'>New Game</button>
 </div>
 
-<p>Button Lit Up Simulator:<span id='buttonslight'></span></p>
-<p id='testArray'></p>
-<p>High Score: <span id='highscore'></span></p>
+<p>Development Mode: CorrectArray:<span id='buttonslight'></span></p>
+<p id='testArray'>              UserArray:</p>
 <%= audio_tag "key08.wav", id: "redSound" %>
 <%= audio_tag "key11.wav", id: "yellowSound" %>
 <%= audio_tag "key04.wav", id: "blueSound" %>
