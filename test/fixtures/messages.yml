@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  message: MyText
+  comment: MyText
 
 two:
   name: MyString
-  message: MyText
+  comment: MyText

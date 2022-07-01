@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MainMessageTest < ActiveSupport::TestCase
+class SandwichTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

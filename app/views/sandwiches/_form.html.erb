@@ -1,0 +1,32 @@
+<%= form_with(model: sandwich) do |form| %>
+  <% if sandwich.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sandwich.errors.count, "error") %> prohibited this sandwich from being saved:</h2>
+
+      <ul>
+        <% sandwich.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :bread, style: "display: block" %>
+    <%= form.text_field :bread %>
+  </div>
+
+  <div>
+    <%= form.label :cheese, style: "display: block" %>
+    <%= form.text_field :cheese %>
+  </div>
+
+  <div>
+    <%= form.label :meat, style: "display: block" %>
+    <%= form.text_field :meat %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
