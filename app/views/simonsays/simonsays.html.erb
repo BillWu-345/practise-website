@@ -16,6 +16,43 @@
   <button class='newGame' onClick='newGame()'>New Game</button>
 </div>
 
+<p id='correctArray'></p>
+
+<div class='saveLoadDiv'>
+  <%= button_to "Generate Random Save", { action: 'randomsave' } %>
+</div>
+
+<div class='saveLoadDiv'>
+  <% a = 3 %>
+  <%= button_to "Save 2", { action: 'save' },
+          params: { simonsave: {
+            savecode: [*('a'..'z'),*('0'..'9')].shuffle[0,20].join,
+            savestate: a
+          }} %>
+</div>
+
+<%= form_for(@simonsave, url: save_path) do |form| %>
+  <div>
+    <%= form.label :savecode, style: "display: block" %>
+    <%= form.text_field :savecode %>
+  </div>
+  <div>
+    <%= form.label :savestate, style: "display: block" %>
+    <%= form.text_field :savestate %>
+  </div>
+  <div>
+    <%= form.submit "Generate Save" %>
+  </div>
+<% end %>
+
+<% @simonsaves.each do |simonsave| %>
+	<div class="message">
+		<p class="name"><%= simonsave.savecode %></p>
+		<p class="comment"><%= simonsave.savestate %></p>
+		<%= button_to "Delete this save", { action: "delete", id: simonsave.id }, method: :delete %>
+	</div>
+<% end %>
+
 <%= audio_tag "key08.wav", id: "redSound" %>
 <%= audio_tag "key11.wav", id: "yellowSound" %>
 <%= audio_tag "key04.wav", id: "blueSound" %>

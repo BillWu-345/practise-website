@@ -62,6 +62,7 @@ function correctResponse(){
     score += 1;
     updateScore();
     correctArray.push(Math.floor(4*Math.random() + 1));
+    document.getElementById('correctArray').innerHTML = correctArray;
     playCorrectArray();
     userArray = [];
   }
@@ -72,6 +73,7 @@ function gameOver() {
 }
 function newGame() {
   correctArray = [];
+  document.getElementById('correctArray').innerHTML = correctArray;
   userArray = [];
   score = 0;
   updateScore();
