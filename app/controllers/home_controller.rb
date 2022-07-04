@@ -10,27 +10,21 @@ class HomeController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      redirect_to root_path(@message), notice: "Comment was successfully created."
-      # format.json { render :show, status: :created, location: @message }
-    else
-      format.html { render :new, status: :unprocessable_entity }
-      format.json { render json: @message.errors, status: :unprocessable_entity }
+      redirect_to root_path()
     end
   end
 
-# 	def create
-#   	@message = Message.new(message_params)
-#   	if @message.save
-#     	redirect_to '/messages'
-#   	else
-#     	render 'new'
-#   	end
-# 	end
+  # DELETE /sandwiches/1 or /sandwiches/1.json
+  def destroy
+    @message.destroy
+    redirect_to root_path()
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
-      @message = MainMessage.find(params[:id])
+      @message = Message.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

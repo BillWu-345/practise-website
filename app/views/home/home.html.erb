@@ -3,7 +3,7 @@
 <h1>Welcome to my website</h1>
 <p>To get started, click on the game below:</p>
 
-<%= link_to simonsays_path, :action => 'go' do %>
+<%= link_to simonsays_path, class: "simonsays_link", :action => 'go' do %>
   <div>
     <%= image_tag("simonsays_icon.jpg", id:'simonsays_icon') %>
     <h1 class='simonsays_text'>Simon Says Game</h1>
@@ -17,12 +17,10 @@
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
-
   <div>
     <%= form.label :comment, style: "display: block" %>
     <%= form.text_area :comment %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>
@@ -34,8 +32,6 @@
 		<p class="name"><%= message.name %></p>
 		<p class="comment"><%= message.comment %></p>
 		<!--<p class="comment"><%= message.created_at %></p>-->
+		<%= button_to "Delete this message", { action: "destroy", id: message.id }, method: :delete %>
 	</div>
 <% end %>
-
-
-

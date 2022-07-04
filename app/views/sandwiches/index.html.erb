@@ -7,6 +7,7 @@
     <%= render sandwich %>
     <p>
       <%= link_to "Show this sandwich", sandwich %>
+      <%= button_to "Destroy this sandwich", @sandwich, method: :delete %>
     </p>
   <% end %>
 </div>

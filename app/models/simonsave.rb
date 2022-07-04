@@ -1,0 +1,2 @@
+class Simonsave < ApplicationRecord
+end
