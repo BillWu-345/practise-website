@@ -13,7 +13,6 @@ class HomeController < ApplicationController
     end
   end
 
-  # DELETE /sandwiches/1 or /sandwiches/1.json
   def destroy
     @message = Message.find(params[:id])
     @message.destroy

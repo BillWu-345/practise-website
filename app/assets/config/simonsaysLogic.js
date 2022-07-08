@@ -126,3 +126,38 @@ function checkIfHighScore() {
     document.getElementById('highscore').innerHTML = highscore;
   }
 }
+
+function saveGame () {
+  sendHttpRequest('POST', location.origin + '/save', {
+    simonsave: {
+      savecode: '23',
+      savestate: '43'
+    }
+  }).then(response => {
+    console.log('success')
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+function sendHttpRequest(method, url, data) {
+  const promise = new Promise((resolve, reject) => {
+    var oReq = new XMLHttpRequest();
+    oReq.open(method, url);
+    if (data) {
+      oReq.setRequestHeader('Content-Type', 'application/json');
+    }
+    oReq.onload = () => {
+      if (oReq.status >= 400) {
+        reject(oReq.response);
+      } else {
+        resolve(oReq.response);
+      }
+    };
+    oReq.onerror = () => {
+      reject('Something went wrong');
+    };
+    oReq.send(JSON.stringify(data));
+  })
+  return promise;
+}

@@ -1,5 +1,5 @@
 class SimonsaysController < ApplicationController
-
+  protect_from_forgery with: :null_session
   def simonsays
     @simonsaves = Simonsave.all
     @simonsave = Simonsave.new
@@ -9,6 +9,8 @@ class SimonsaysController < ApplicationController
     @simonsave = Simonsave.new(simonsave_params)
     if @simonsave.save
       redirect_to simonsays_path()
+    else
+      redirect_to root_path()
     end
   end
 
