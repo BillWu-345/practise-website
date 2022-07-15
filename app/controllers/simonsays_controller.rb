@@ -7,6 +7,7 @@ class SimonsaysController < ApplicationController
 
   def save
     @simonsave = Simonsave.new(simonsave_params)
+    return render json: { gamestate: 1};
     if @simonsave.save
       redirect_to simonsays_path()
     else

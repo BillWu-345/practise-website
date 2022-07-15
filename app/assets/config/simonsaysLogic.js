@@ -134,7 +134,7 @@ function saveGame () {
       savestate: '43'
     }
   }).then(response => {
-    console.log('success')
+    console.log(response);
   }).catch(err => {
     console.log(err);
   })
@@ -142,22 +142,22 @@ function saveGame () {
 
 function sendHttpRequest(method, url, data) {
   const promise = new Promise((resolve, reject) => {
-    var oReq = new XMLHttpRequest();
-    oReq.open(method, url);
+    var req = new XMLHttpRequest();
+    req.open(method, url);
     if (data) {
-      oReq.setRequestHeader('Content-Type', 'application/json');
+      req.setRequestHeader('Content-Type', 'application/json');
     }
-    oReq.onload = () => {
-      if (oReq.status >= 400) {
-        reject(oReq.response);
+    req.onload = () => {
+      if (req.status >= 400) {
+        reject(req.response);
       } else {
-        resolve(oReq.response);
+        resolve(req.response);
       }
     };
-    oReq.onerror = () => {
+    req.onerror = () => {
       reject('Something went wrong');
     };
-    oReq.send(JSON.stringify(data));
+    req.send(JSON.stringify(data));
   })
   return promise;
 }
