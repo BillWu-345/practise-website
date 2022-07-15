@@ -127,17 +127,18 @@ function checkIfHighScore() {
   }
 }
 
-function saveGame () {
+function saveGame() {
   sendHttpRequest('POST', location.origin + '/save', {
     simonsave: {
-      savecode: '23',
-      savestate: '43'
+      savecode: '',
+      savestate: correctArray.join('')
     }
   }).then(response => {
     console.log(response);
+    alert("Copy your savecode: " + JSON.parse(response).savecode);
   }).catch(err => {
     console.log(err);
-  })
+  });
 }
 
 function sendHttpRequest(method, url, data) {
@@ -158,6 +159,6 @@ function sendHttpRequest(method, url, data) {
       reject('Something went wrong');
     };
     req.send(JSON.stringify(data));
-  })
+  });
   return promise;
 }

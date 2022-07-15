@@ -7,9 +7,8 @@ class SimonsaysController < ApplicationController
 
   def save
     @simonsave = Simonsave.new(simonsave_params)
-    return render json: { gamestate: 1};
     if @simonsave.save
-      redirect_to simonsays_path()
+      return render json: { savecode: params[:simonsave][:savecode]};
     else
       redirect_to root_path()
     end
@@ -31,6 +30,7 @@ class SimonsaysController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def simonsave_params
+      params[:simonsave][:savecode] = generateRandomCode()
       params.require(:simonsave).permit(:savecode, :savestate)
     end
 
