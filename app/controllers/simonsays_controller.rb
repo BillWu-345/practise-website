@@ -1,5 +1,7 @@
 class SimonsaysController < ApplicationController
   protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
+
   def simonsays
     @simonsaves = Simonsave.all
     @simonsave = Simonsave.new
@@ -14,17 +16,34 @@ class SimonsaysController < ApplicationController
     end
   end
 
-  def randomsave
-    @simonsave = Simonsave.new(randomsave_params)
+  def save
+    @simonsave = Simonsave.new(simonsave_params)
+    if @simonsave.save
+      return render json: { savecode: params[:simonsave][:savecode]};
+    else
+      redirect_to root_path()
+    end
+  end
+
+  def manualSave
+    @simonsave = Simonsave.new(manualSave_params)
     if @simonsave.save
       redirect_to simonsays_path()
+    else
+      redirect_to root_path()
     end
   end
 
   def delete
     @simonsave = Simonsave.find(params[:id])
+    if @simonsave.destroy
+      redirect_to simonsays_path()
+    end
+  end
+
+  def delete2
+    @simonsave = Simonsave.find_by savecode: params[:savecode]
     @simonsave.destroy
-    redirect_to simonsays_path()
   end
 
   private
@@ -34,8 +53,7 @@ class SimonsaysController < ApplicationController
       params.require(:simonsave).permit(:savecode, :savestate)
     end
 
-    def randomsave_params
-      params = ActionController::Parameters.new(simonsave: { savecode: generateRandomCode(), savestate: generateRandomCode() })
+    def manualSave_params
       params.require(:simonsave).permit(:savecode, :savestate)
     end
 

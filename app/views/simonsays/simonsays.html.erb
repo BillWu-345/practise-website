@@ -18,22 +18,10 @@
 
 <p id='correctArray'></p>
 
-<div class='saveLoadDiv'>
-  <%= button_to "Generate Random Save", { action: 'randomsave' } %>
-</div>
+<button onClick='saveGame()'>Save Game</button>
+<button onClick='loadGame()'>Load Game</button>
 
-<div class='saveLoadDiv'>
-  <% a = 3 %>
-  <%= button_to "Save 2", { action: 'save' },
-          params: { simonsave: {
-            savecode: [*('a'..'z'),*('0'..'9')].shuffle[0,20].join,
-            savestate: a
-          }} %>
-</div>
-
-<button onClick='saveGame()'>Save Game Javascript</button>
-
-<%= form_for(@simonsave, url: save_path) do |form| %>
+<%= form_for(@simonsave, url: manualSave_path) do |form| %>
   <div>
     <%= form.label :savecode, style: "display: block" %>
     <%= form.text_field :savecode %>

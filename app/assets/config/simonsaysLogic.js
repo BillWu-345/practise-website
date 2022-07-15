@@ -162,3 +162,14 @@ function sendHttpRequest(method, url, data) {
   });
   return promise;
 }
+
+function loadGame() {
+  sendHttpRequest('DELETE', location.origin + '/delete2', {
+    savecode: 'xyz'
+  }).then(response => {
+    console.log(response);
+    alert("Load successful");
+  }).catch(err => {
+    console.log(err);
+  });
+}
