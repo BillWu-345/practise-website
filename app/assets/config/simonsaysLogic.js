@@ -62,7 +62,6 @@ function correctResponse(){
     score += 1;
     updateScore();
     correctArray.push(Math.floor(4*Math.random() + 1));
-    document.getElementById('correctArray').innerHTML = correctArray;
     playCorrectArray();
     userArray = [];
   }
@@ -73,7 +72,6 @@ function gameOver() {
 }
 function newGame() {
   correctArray = [];
-  document.getElementById('correctArray').innerHTML = correctArray;
   userArray = [];
   score = 0;
   updateScore();
@@ -107,11 +105,11 @@ async function playCorrectArray() {
         setTimeout(()=>{document.getElementById("green").style.backgroundColor = "green"} , 750);
         break;
       default:
+        console.log('Error, note not found');
     }
   }
   currentlyPlaying = false;
 }
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -126,7 +124,6 @@ function checkIfHighScore() {
     document.getElementById('highscore').innerHTML = highscore;
   }
 }
-
 function saveGame() {
   sendHttpRequest('POST', location.origin + '/save', {
     simonsave: {
@@ -140,7 +137,6 @@ function saveGame() {
     console.log(err);
   });
 }
-
 function sendHttpRequest(method, url, data) {
   const promise = new Promise((resolve, reject) => {
     var req = new XMLHttpRequest();
@@ -162,14 +158,24 @@ function sendHttpRequest(method, url, data) {
   });
   return promise;
 }
-
 function loadGame() {
-  sendHttpRequest('DELETE', location.origin + '/delete2', {
-    savecode: 'xyz'
+  sendHttpRequest('DELETE', location.origin + '/delete', {
+    savecode: document.getElementById("saveInput").value
   }).then(response => {
     console.log(response);
-    alert("Load successful");
+     let saveString = JSON.parse(response).savestate;
+     alert(saveString.split(''));
+     continueGame(saveString.split(''));
   }).catch(err => {
     console.log(err);
   });
+}
+function continueGame(continueArray) {
+  correctArray = continueArray.map(numStr => parseInt(numStr));
+  userArray = [];
+  score = continueArray.length;
+  updateScore();
+  gameFinished = false;
+  currentlyPlaying = false;
+  playCorrectArray();
 }

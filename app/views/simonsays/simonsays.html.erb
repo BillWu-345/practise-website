@@ -16,10 +16,9 @@
   <button class='newGame' onClick='newGame()'>New Game</button>
 </div>
 
-<p id='correctArray'></p>
-
 <button onClick='saveGame()'>Save Game</button>
 <button onClick='loadGame()'>Load Game</button>
+<input id="saveInput" />
 
 <%= form_for(@simonsave, url: manualSave_path) do |form| %>
   <div>

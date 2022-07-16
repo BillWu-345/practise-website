@@ -34,16 +34,18 @@ class SimonsaysController < ApplicationController
     end
   end
 
-  def delete
+  def manualdelete
     @simonsave = Simonsave.find(params[:id])
     if @simonsave.destroy
       redirect_to simonsays_path()
     end
   end
 
-  def delete2
+  def delete
     @simonsave = Simonsave.find_by savecode: params[:savecode]
-    @simonsave.destroy
+    if @simonsave.destroy
+      return render json: { savestate: @simonsave[:savestate] }
+    end
   end
 
   private
