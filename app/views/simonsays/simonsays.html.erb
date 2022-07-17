@@ -17,30 +17,33 @@
 </div>
 
 <button onClick='saveGame()'>Save Game</button>
-<button onClick='loadGame()'>Load Game</button>
-<input id="saveInput" />
+<p></p>
+<div>
+  <button onClick='loadGame()'>Load Game</button>
+  Enter Savecode: <input id="saveInput" />
+</div>
 
-<%= form_for(@simonsave, url: manualSave_path) do |form| %>
-  <div>
-    <%= form.label :savecode, style: "display: block" %>
-    <%= form.text_field :savecode %>
-  </div>
-  <div>
-    <%= form.label :savestate, style: "display: block" %>
-    <%= form.text_field :savestate %>
-  </div>
-  <div>
-    <%= form.submit "Generate Save" %>
-  </div>
-<% end %>
+<!--<%= form_for(@simonsave, url: manualSave_path) do |form| %>-->
+<!--  <div>-->
+<!--    <%= form.label :savecode, style: "display: block" %>-->
+<!--    <%= form.text_field :savecode %>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <%= form.label :savestate, style: "display: block" %>-->
+<!--    <%= form.text_field :savestate %>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <%= form.submit "Generate Save" %>-->
+<!--  </div>-->
+<!--<% end %>-->
 
-<% @simonsaves.each do |simonsave| %>
-	<div class="message">
-		<p class="name"><%= simonsave.savecode %></p>
-		<p class="comment"><%= simonsave.savestate %></p>
-		<%= button_to "Delete this save", { action: "delete", id: simonsave.id }, method: :delete %>
-	</div>
-<% end %>
+<!--<% @simonsaves.each do |simonsave| %>-->
+<!--	<div class="message">-->
+<!--		<p class="name"><%= simonsave.savecode %></p>-->
+<!--		<p class="comment"><%= simonsave.savestate %></p>-->
+<!--		<%= button_to "Delete this save", { action: "delete", id: simonsave.id }, method: :delete %>-->
+<!--	</div>-->
+<!--<% end %>-->
 
 <%= audio_tag "key08.wav", id: "redSound" %>
 <%= audio_tag "key11.wav", id: "yellowSound" %>

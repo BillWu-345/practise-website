@@ -45,6 +45,8 @@ class SimonsaysController < ApplicationController
     @simonsave = Simonsave.find_by savecode: params[:savecode]
     if @simonsave.destroy
       return render json: { savestate: @simonsave[:savestate] }
+    else
+      return
     end
   end
 

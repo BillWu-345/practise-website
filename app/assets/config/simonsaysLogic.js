@@ -127,12 +127,13 @@ function checkIfHighScore() {
 function saveGame() {
   sendHttpRequest('POST', location.origin + '/save', {
     simonsave: {
-      savecode: '',
       savestate: correctArray.join('')
     }
   }).then(response => {
     console.log(response);
-    alert("Copy your savecode: " + JSON.parse(response).savecode);
+    const savecode = JSON.parse(response).savecode;
+    alert("Copy your savecode: " + savecode);
+    document.getElementById("saveInput").value = savecode
   }).catch(err => {
     console.log(err);
   });
@@ -164,7 +165,7 @@ function loadGame() {
   }).then(response => {
     console.log(response);
      let saveString = JSON.parse(response).savestate;
-     alert(saveString.split(''));
+     document.getElementById("saveInput").value = '';
      continueGame(saveString.split(''));
   }).catch(err => {
     console.log(err);
@@ -173,7 +174,7 @@ function loadGame() {
 function continueGame(continueArray) {
   correctArray = continueArray.map(numStr => parseInt(numStr));
   userArray = [];
-  score = continueArray.length;
+  score = continueArray.length - 1;
   updateScore();
   gameFinished = false;
   currentlyPlaying = false;
