@@ -19,6 +19,10 @@ class HomeController < ApplicationController
     redirect_to root_path()
   end
 
+  # About page
+  def about
+
+  end
 
   private
     # Only allow a list of trusted parameters through.
