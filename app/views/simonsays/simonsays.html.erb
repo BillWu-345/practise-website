@@ -1,7 +1,16 @@
 <% provide(:title, "Simon Says") %>
 
 <h3 style='font-size: 40px'>Play the Classic SimonSays Game</h3>
-<h4>High Score: <span id='highscore'></span></h4>
+<h4 class="highScore">High Score: <span id='highscore'></span></h4>
+<div class="saveLoadBox">
+  <button class= "saveButton" onClick='saveGame()'>
+    <%= image_tag("saveicon.jpg", id:'saveIcon') %>Save</button>
+  <br>
+  <button class= "loadButton" onClick='loadGame()'>
+    <%= image_tag("loadicon.png", id:'loadIcon') %>Load</button>
+  <br>
+  <p class="saveCode">Enter Savecode: <br><input id="saveInput" /></p>
+</div>
 <div class="mainbox">
   <div class='scorebox'>
     <h2 id='score'>0</h2>
@@ -16,13 +25,15 @@
   <button class='newGame' onClick='newGame()'>New Game</button>
 </div>
 
-<button onClick='saveGame()'>Save Game</button>
-<p></p>
-<div>
-  <button onClick='loadGame()'>Load Game</button>
-  Enter Savecode: <input id="saveInput" />
-</div>
 
+
+<%= audio_tag "key08.wav", id: "redSound" %>
+<%= audio_tag "key11.wav", id: "yellowSound" %>
+<%= audio_tag "key04.wav", id: "blueSound" %>
+<%= audio_tag "key15.wav", id: "greenSound" %>
+<%= javascript_include_tag('simonsaysLogic.js') %>
+
+<!--The code below is for showing all savefiles-->
 <!--<%= form_for(@simonsave, url: manualSave_path) do |form| %>-->
 <!--  <div>-->
 <!--    <%= form.label :savecode, style: "display: block" %>-->
@@ -44,9 +55,3 @@
 <!--		<%= button_to "Delete this save", { action: "delete", id: simonsave.id }, method: :delete %>-->
 <!--	</div>-->
 <!--<% end %>-->
-
-<%= audio_tag "key08.wav", id: "redSound" %>
-<%= audio_tag "key11.wav", id: "yellowSound" %>
-<%= audio_tag "key04.wav", id: "blueSound" %>
-<%= audio_tag "key15.wav", id: "greenSound" %>
-<%= javascript_include_tag('simonsaysLogic.js') %>

@@ -174,7 +174,7 @@ function loadGame() {
 function continueGame(continueArray) {
   correctArray = continueArray.map(numStr => parseInt(numStr));
   userArray = [];
-  score = continueArray.length - 1;
+  score = continueArray.length === 0 ? 0 : continueArray.length - 1;
   updateScore();
   gameFinished = false;
   currentlyPlaying = false;

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # for copy+pasting
-  resources :sandwiches
 
   # main page
   root 'home#home'

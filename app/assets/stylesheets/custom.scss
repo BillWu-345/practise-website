@@ -7,8 +7,14 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+// * {
+//   border: 1px solid red;
+// }
+
 body {
   padding-top: 60px;
+  font-family: 'Calisto MT', 'Bookman Old Style', 'Bookman', 'Goudy Old Style',
+    'Garamond', 'Hoefler Text', 'Bitstream Charter', 'Georgia', serif;
 }
 
 section {
@@ -97,11 +103,37 @@ footer {
   }
 }
 
-h4 {
-  text-align: right;
+// Highscore and save/load feature
+.highScore {
+  display: inline-block;
   font-size: 25px;
+  margin-top: 50px;
 }
 
+.saveLoadBox {
+  display: inline-block;
+  float: right;
+  margin: 20px;
+}
+
+.saveButton, .loadButton {
+  float: right;
+  font-size: 35px;
+  margin: 5px;
+  width: 170px;
+}
+
+#saveIcon, #loadIcon {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+.saveCode {
+  margin-top: 100px;
+}
+
+// Main Game Features
 .mainbox {
   width: 500px;
   height: 500px;
@@ -164,7 +196,7 @@ h4 {
   top: 150px; left: 150px;
   width: 200px;
   height: 200px;
-  background-color: lightgrey !important;
+  background-color: lightgrey;
 }
 #score {
   border-radius: 150px;
@@ -205,4 +237,25 @@ h4 {
 
 .simonsays_link:hover {
   text-decoration: none;
+}
+
+.messagesHeader {
+  margin-top: 50px;
+}
+
+.headerSubtext {
+  font-size: 14px;
+}
+
+.deleteButton {
+  display: inline-block;
+  float: right;
+  height: 50px;
+}
+.name {
+  display: inline-block;
+}
+
+.emptyGap {
+  margin-top: 30px;
 }

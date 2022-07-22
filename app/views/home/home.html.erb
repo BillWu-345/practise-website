@@ -26,12 +26,19 @@
   </div>
 <% end %>
 
-<p>Messages:</p>
+<h3 class="messagesHeader">Messages:
+  <span class="headerSubtext">(Messages can be deleted within 5 minutes or after 7 days)</span>
+</h3>
 <% @messages.each do |message| %>
 	<div class="message">
-		<p class="name"><%= message.name %></p>
-		<p class="comment"><%= message.comment %></p>
-		<!--<p class="comment"><%= message.created_at %></p>-->
-		<%= button_to "Delete this message", { action: "destroy", id: message.id }, method: :delete %>
+	  <p class="emptyGap"></p>
+		<p class="name">Name: <%= message.name %></p>
+		<% if Time.now < message.created_at + 5.minutes || Time.now > message.created_at + 7.days %>
+			<%= button_to "Delete this message",
+			  { action: "destroy", id: message.id },
+	      { form_class: "deleteButton", class: "deleteButton", method: :delete }
+	    %>
+    <% end %>
+		<p class="comment">Comment: <%= message.comment %></p>
 	</div>
 <% end %>
